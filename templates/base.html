@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Shop</title>
+    <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/small/64/000000/fire-heart.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        [x-cloak] { 
+            display: none !important; 
+        }
+        :root {
+            --primary: rgb(88, 40, 244);
+            --primary-hover: rgb(69, 29, 200);
+            --black: #1f2937;
+            --font1: 'Lobster', sans-serif;
+        }
+        h1 {
+            @apply text-4xl font-bold mb-4
+        }
+        h2 {
+            @apply text-2xl font-bold mb-3
+        }
+        h3 {
+            @apply text-lg font-bold 
+        }
+        .font1 {
+            font-family: var(--font1);
+        }
+        .button, button, [type='submit'], [type='button'] {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            text-align: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            padding: 0 1rem;
+            min-height: 3.3rem;
+            font-weight: 600;
+            box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+            transition-property: transform;
+            transition-duration: .2s;
+            color: white;
+            background-color: var(--primary);
+            width: fit-content;
+        }
+        .button:hover, button:hover, [type='submit']:hover, [type='button']:hover {
+            background-color: var(--primary-hover);
+        }
+        .button:active, button:active, [type='submit']:active, [type='button']:active {
+            transform: scale(0.95);
+        }
+        .secondaryAction {
+            background-color: white;
+            color: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        .secondaryAction:hover, .button.secondaryAction:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .navitems>li>a {
+            @apply flex items-center gap-2 h-12 px-4 hover:bg-gray-700 rounded-lg;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            background-color: white;
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+        .hoverlist>* {
+            @apply hover:bg-gray-100 rounded-md transition duration-150;
+        }
+        .hoverlist>*>a {
+            @apply flex items-center p-2;
+        }
+        .highlight {
+            @apply !bg-indigo-100;
+        }
+        .titleBlip {
+            animation: 1s fadeIn;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            10% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        form p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        label, input {
+          display: inline-block;
+        }
+        form p label {
+            width: 7rem;
+            }
+        label {
+            margin: 6px 0 3px;
+        }
+        input, textarea {
+            width: 100%;
+        }
+        input[type="file"], select {
+            background-color: white;
+            padding-left: 0;
+        }
+        label[for="id_remember"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        input[name="remember"] {
+            width: auto;
+        }
+        .btn-red {
+            @apply inline-flex bg-red-500;
+        }
+        .btn-red:hover {
+            @apply bg-red-600;
+        }
+        .login .secondaryAction {
+            box-shadow: none;
+            display: block;
+            padding: none;
+            padding: 0px;
+            border: none;
+            font-size: smaller;
+            font-weight: normal;
+            min-height: auto;
+            margin-bottom: 1.5rem;
+        }
+        .login .secondaryAction:hover {
+            @apply text-gray-500 underline bg-white;
+        }
+        #id_tags {
+            margin-bottom: 1rem;
+        }
+        #id_tags div {
+            display: inline-block;
+            margin-right: 0.5rem;  
+        }
+        #id_tags div label {
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgb(229 231 235);
+            width: auto;
+            cursor: pointer;
+            user-select: none;
+        }
+        #id_tags input {
+            display: none;
+        }
+        #id_tags label:has(input:checked) {
+            background-color: var(--black);
+            color: white;
+            border: 1px solid var(--black);
+        }
+        .textarea, textarea {
+            margin-bottom: 1rem;
+        }
+        .textarea, textarea, input {
+            border-radius: 0.5rem;
+            padding: 1rem 1.2rem;
+            background-color: rgba(232, 240, 254, 1);
+        }
+        .errorlist li {
+            color: rgb(253, 88, 49);
+            padding: 0.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid rgb(253, 88, 49);
+            margin-bottom: 1rem;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            color: rgb(0,0,0,0.6); 
+            background-color: rgb(0,0,0,0.05);
+            border-radius: 0.75rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+        .tab:hover {
+            background-color: rgb(0,0,0,0.1);
+        }
+        .tab.selected {
+            color: white;
+            background-color: var(--black);
+        }
+        .replyform {
+            border-top: none;
+        }
+        .replyform textarea, .replyform input {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            margin-bottom: 0px;
+            height: 3.2rem;
+        }
+        .replyform button {
+            margin-left: 0.5rem;
+            min-height: unset;
+        }
+        .fade-me-in.htmx-settling{
+            opacity: 0;
+        }
+        .fade-me-in {
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+        #profile article figure img {
+            @apply aspect-[3/2] object-cover;
+        }
+        #profile article p {
+            @apply truncate leading-normal;
+        }
+
+    .product-card {
+    border: 3px solid #ccc; 
+    padding: 10px; 
+    border-radius: 15px; 
+        }
+        .product-card__tag-wrapper {
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    border-radius: 20px; 
+    padding: 8px; 
+    background-color: #ccc;
+}
+.product-card__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+    
+    
+}
+
+.product-card__price-wrapper {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    margin-bottom: 10px; /* Khoảng cách dưới phần giá */
+}
+
+.product-card__button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.product-card__button--add-to-cart {
+    background-color: #28a745;
+    color: white;
+}
+
+.product-card__button--buy {
+    background-color: #007bff;
+    color: white;
+}
+
+.product-card__button:hover {
+    opacity: 0.8;
+}
+
+.product-card__tag-wrapper {
+    margin-bottom: 10px; /* Thêm khoảng cách giữa tag và nút */
+       
+}
+
+.image-wrapper {
+    width: 210px; 
+    height: 280px; /* Đặt chiều cao mong muốn */
+    border: 0.5px solid #000; /* Viền đen xung quanh ảnh */
+    overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước khung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card__hero-image {
+    width: 100%; /* Đặt chiều rộng của ảnh bằng với chiều rộng khung */
+    height: 100%; /* Chiều cao tự động để giữ tỷ lệ của ảnh */
+}
+.shoe-card-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.shoe-image-description-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.shoe-image-wrapper {
+    flex: 1;
+    max-width: 300px; /* Điều chỉnh kích thước hình ảnh */
+}
+
+.shoe-card__hero-image {
+    width: 100%; /* Đặt chiều rộng mong muốn */
+    height: 100%; /* Đặt chiều cao mong muốn */
+    border: 0.5px solid #000; /* Viền đen xung quanh ảnh */
+    overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước khung */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shoe-description-wrapper {
+    flex: 2;
+    padding: 20px;
+}
+
+.shoe-card__link-overlay {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold; 
+    display: block; 
+    text-align: center;
+}
+
+.shoe-card__info {
+    margin-top: 20px;
+}
+
+.shoe-card__price-wrapper {
+    margin-bottom: 10px;
+}
+
+.shoe-card__tag-wrapper, .shoe-card__brand-wrapper {
+    margin-bottom: 10px;
+}
+
+.shoe-card__button {
+    margin-right: 10px;
+}
+.shoe-card__size-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Để các ô tự động xuống dòng khi hết chỗ */
+    gap: 10px; /* Khoảng cách giữa các ô */
+}
+
+.shoe-card__size {
+    padding: 8px ; /* Khoảng cách bên trong ô */
+    border: 1px solid #ccc; /* Viền xung quanh ô */
+    border-radius: 10px; /* Bo tròn góc viền */
+    background-color: #f9f9f9; /* Màu nền */
+    text-align: center; /* Canh giữa nội dung */
+    margin-bottom: 10px; /* Khoảng cách dưới mỗi ô */
+    min-width: 50px; /* Độ rộng tối thiểu của ô */
+   
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 15px;
+    font-size: 14px;
+    width: 300px; /* Điều chỉnh chiều rộng theo nhu cầu */
+}
+
+.search-button {
+   
+    font-size: 15px;
+    margin-left: 5px; /* Khoảng cách giữa ô input và nút bấm */
+}
+
+.search-bar {
+    border: 1px solid #0000; /* Đường viền màu đen dày 1px */
+    background-color: #ccc;
+    padding: 16px; /* Khoảng cách bên trong */
+    border-radius: 8px; /* Bo góc (tuỳ chọn) */
+     display: inline-block;
+
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px; /* Khoảng cách bên trong khung */
+    border: 1px solid #ccc; /* Đường viền xung quanh khung */
+    border-radius: 8px; /* Bo tròn các góc */
+    background-color: #f9f9f9; /* Màu nền của khung */
+}
+
+
+
+
+    </style>
+</head>
+<body class="bg-gray-100">
+{% include 'includes/messages.html' %}
+{% include 'includes/header.html' %}
+{% block layout %}
+{% endblock %}
+    
+</body>
+</html>

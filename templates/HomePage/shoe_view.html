@@ -1,0 +1,40 @@
+
+{% extends 'layouts/b.html'%}
+{% block content %}
+<article class="shoe-card-detail">
+        <figure>
+            <a class="shoe-card__link-overlay" tabindex="-1">{{ shoe.name }}</a>
+            <div class="shoe-image-description-wrapper">
+                <div class="shoe-image-wrapper">
+                    <img class="shoe-card__hero-image" src="{{ shoe.image.url }}">
+                </div>
+                <div class="shoe-description-wrapper">
+                    <p>{{ shoe.description }}</p>
+                    <div class="shoe-card__info">
+                        <div class="shoe-card__price-wrapper">
+                            <div class="shoe-card__price">{{ shoe.price }}$</div>
+                        </div>
+                        <div class="shoe-card__tag-wrapper">
+                            {% for tag in shoe.tag.all %}
+                                <div class="shoe-card__tag">{{ tag.name }}'s shoes</div>
+                            {% endfor %}
+                        </div>
+                        <div class="shoe-card__brand-wrapper">
+                            {% for brand in shoe.brand.all %}
+                                <div class="shoe-card__brand">{{ brand.name }}</div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Add to Cart</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </figure>
+    
+</article>
+{% endblock %}

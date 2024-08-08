@@ -1,0 +1,17 @@
+{% extends "layouts/c.html" %}
+
+    {% block content2 %}
+    <form  method="get">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    {%endblock%}
+
+    <ul>
+    {% block content1 %}
+    {%  for shoe in shoes %}
+    {% include "HomePage/shoe.html" %}
+    {% endfor %}
+    </ul>
+    {%endblock%}
+

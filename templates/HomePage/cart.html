@@ -1,0 +1,22 @@
+{% extends "layouts/b.html" %}
+{% block content%}
+
+    <h1>Your Cart</h1>
+    <ul>
+        {% for item in cart.items.all %}
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.name }}" width="100" height="100">
+                </div>
+                <div class="cart-item-details">
+                   <li>{{ item.shoe.name }} - Size: {{ item.size.name }} - Quantity: {{ item.quantity }} - Price: {{ item.shoe.price }}</li>
+                </div>
+                 <button onclick="">Delete</button>
+            </div>
+        {% endfor %}
+    </ul>
+    <button onclick=""> Checkout</button>
+
+
+
+{% endblock%}

@@ -1,0 +1,27 @@
+ {% extends "layouts/d.html" %}
+ {% block content %}
+ 
+
+ <div id="profile" class="flex flex-col items-center">
+    
+    <div class="w-full md:w-[36rem] lg:w-[50rem]">
+        <div class="card p-6">
+            <div class="text-center flex flex-col items-center">
+                <div class="text-center max-w-md">
+                    <h1>{{profile.realname}}</h1>
+                    <div class ="text-gray-400 mb-2 -mt-3"> @{{user.username}}</div>
+                    <div class="text-gray-400 mb-2 -mt-3"></div>
+                    <div class="flex items-center justify-center mx-auto">
+                        Location: {{profile.location}}
+                    </div>
+                    <div class="my-8">
+                        Phone Number: {{profile.phonenumber}}
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+ {% endblock %}
