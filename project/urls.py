@@ -33,4 +33,6 @@ urlpatterns = [
     path('profile/edit/', profile_edit_view, name ='profile-edit'),
     path('profile/delete/',profile_delete_view, name ='profile-delete'),
     path('cart/', cart_view, name='cart-view'),
+    path('cart/remove/<int:id>/', delete_cartitem, name='delete-cart-item'),  
+    path('confirm_checkout/', confirm_checkout, name='confirm-checkout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

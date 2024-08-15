@@ -413,8 +413,57 @@
     border: 1px solid #ccc; /* Đường viền xung quanh khung */
     border-radius: 8px; /* Bo tròn các góc */
     background-color: #f9f9f9; /* Màu nền của khung */
+    justify-content: space-between;
+}
+.cart-item-image {
+    margin-right: 10px;
 }
 
+.cart-item-details {
+    flex-grow: 1; /* Để chiếm khoảng trống giữa hình ảnh và nút delete */
+    margin-right: 10px;
+}
+
+.cart-delete-btn {
+    margin-left: auto; /* Đẩy nút delete sang bên phải */
+}
+.cart-checkout-btn {
+    text-align: right;
+    font-weight: bold; /* Làm chữ đậm */
+    text-decoration: underline; /* Thêm gạch dưới chữ */
+}
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Căn chỉnh các phần tử trên cùng một hàng */
+    margin-bottom: 20px;
+}
+
+.cart-items-checkout {
+    flex: 1; /* Giữ phần cart-items-checkout phía bên phải */
+    margin-left: 20px;
+    
+}.cart-items-checkout {
+    flex: 1; /* Giữ phần cart-items-checkout phía bên phải */
+    margin-left: 20px;
+    
+}
+
+.user-info {
+    flex: 1; /* Giữ phần user-info phía bên trái */
+    margin-right: 20px;
+}
+
+.total-price {
+    text-align: right; /* Căn phải phần Total Price */
+    margin-top: 20px;
+}
+
+.cart-checkout-btn {
+    text-align: right; /* Căn phải nút Complete Transaction */
+    font-weight: bold; /* Làm chữ đậm */
+    text-decoration: underline; /* Thêm gạch dưới chữ */
+}
 
 
 

@@ -9,4 +9,5 @@ class SearchForm(forms.Form):
     
 class AddToCartForm(forms.Form):
     size = forms.ModelChoiceField(queryset=SizeShoe.objects.all(), required=True, label='Select Size')
-    quantity = forms.IntegerField(min_value=1, initial=1)
+    
+    

@@ -1,0 +1,47 @@
+{% extends "layouts/b.html" %}
+{% block content %}
+
+<h2>Your order</h2>
+
+<div class="checkout-container">
+    <div class="user-info">
+        <h3>User Information</h3>
+        <p> Name: {{ user.profile.realname }}</p>
+        <p>Email: {{ user.profile.email }}</p>
+        <p>Location: {{ user.profile.location }}</p>
+        <p>Phone Number: {{ user.profile.phonenumber }}</p>
+    </div>
+
+    <div class="cart-items-checkout">
+        <h3>  Items</h3>
+        <ul>
+            {% for item in cart.items.all %}
+            
+               <li class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.name }}" width="100" height="100">
+                    </div>
+                    {{ item.shoe.name }} - Size: {{ item.size.name }} - Price: ${{ item.shoe.price }}
+                </li>
+               
+            {% endfor %}
+
+        </ul>
+
+    </div>
+    
+</div>
+
+
+        <div class="total-price">
+    <h3>Total Price: ${{ total_price }}</h3>
+</div>
+<div class="cart-checkout-btn">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Complete Transaction</button>
+    </form>
+</div>
+
+
+{% endblock%}

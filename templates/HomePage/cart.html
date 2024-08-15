@@ -9,13 +9,18 @@
                     <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.name }}" width="100" height="100">
                 </div>
                 <div class="cart-item-details">
-                   <li>{{ item.shoe.name }} - Size: {{ item.size.name }} - Quantity: {{ item.quantity }} - Price: {{ item.shoe.price }}</li>
+                   <li>Name: {{ item.shoe.name }} - Size: {{ item.size.name }}  - Price: {{ item.shoe.price }}</li>
                 </div>
-                 <button onclick="">Delete</button>
+                <div class ='cart-delete-btn'>
+                  <a href="{% url 'delete-cart-item' item.id %}" class="remove-item">Delete</a>
+                </div>
             </div>
         {% endfor %}
     </ul>
-    <button onclick=""> Checkout</button>
+   <div class='cart-checkout-btn'>
+    <a href="{% url 'confirm-checkout' %}" class="btn btn-primary">Checkout</a>
+</div>
+
 
 
 
