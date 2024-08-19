@@ -3,45 +3,67 @@
 
 <h2>Your order</h2>
 
-<div class="checkout-container">
-    <div class="user-info">
+<div class="checkout-container" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div class="user-info" style="flex: 1; margin-right: 20px;">
         <h3>User Information</h3>
-        <p> Name: {{ user.profile.realname }}</p>
-        <p>Email: {{ user.profile.email }}</p>
-        <p>Location: {{ user.profile.location }}</p>
-        <p>Phone Number: {{ user.profile.phonenumber }}</p>
+        <p><strong>Name:</strong> {{ user.profile.realname }}</p>
+        <p><strong>Email:</strong> {{ user.profile.email }}</p>
+        <p><strong>Location:</strong> {{ user.profile.location }}</p>
+        <p><strong>Phone Number:</strong> {{ user.profile.phonenumber }}</p>
     </div>
 
-    <div class="cart-items-checkout">
-        <h3>  Items</h3>
-        <ul>
+    <div class="cart-items-checkout" style="flex: 2;">
+        <h3>Items</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
             {% for item in cart.items.all %}
-            
-               <li class="cart-item">
-                    <div class="cart-item-image">
+                <li class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div class="cart-item-image" style="margin-right: 10px;">
                         <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.name }}" width="100" height="100">
                     </div>
-                    {{ item.shoe.name }} - Size: {{ item.size.name }} - Price: ${{ item.shoe.price }}
+                    <div>
+                        <p>{{ item.shoe.name }} - Size: {{ item.size.name }} - Price: ${{ item.shoe.price }}</p>
+                    </div>
                 </li>
-               
             {% endfor %}
-
         </ul>
-
     </div>
-    
 </div>
 
-
-        <div class="total-price">
-    <h3>Total Price: ${{ total_price }}</h3>
-</div>
-<div class="cart-checkout-btn">
-    <form method="POST" action="">
+<div class="voucher-discount" style="margin-bottom: 20px;">
+    <h3>Have a Voucher?</h3>
+    <form method="POST" action="" class="form-inline" style="display: flex; align-items: center;">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Complete Transaction</button>
+        <input type="text" class="form-control" name="voucher_code" placeholder="Enter Voucher Code" style="margin-right: 10px;">
+        <button type="submit" class="btn btn-secondary">Apply Voucher</button>
     </form>
 </div>
 
+<div class="payment-method" style="margin-bottom: 20px;">
+    <h3>Select Payment Method</h3>
+        {% csrf_token %}
+        <div class="form-group" style="margin-bottom: 20px;">
+            <select class="form-control" name="payment_method" id="payment_method" required>
+                <option value="cod">Cash on Delivery (COD)</option>
+                <option value="momo">Momo</option>
+                <option value="zalopay">Zalo Pay</option>
+            </select>
+        </div>
+        
+</div>
 
-{% endblock%}
+      <div class="total-price" >
+       {% if discount %}
+       <h3 >Discount: -${{ discount }}</h3> 
+       {% endif %}
+      <h3 >Total Price: ${{ total_price }}</h3>
+      </div>
+    <form method="POST" action="{% url 'complete-transaction' %}">     
+    {% csrf_token %}
+        <div class="cart-checkout-btn">
+            <button type="submit" class="btn btn-primary">Complete Transaction</button>
+        </div>
+    </form>
+    <a class="button secondaryAction ml-1" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+</div>
+
+{% endblock %}

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'ORDER'
+    
 ]
 SOCIALACCOUNT_PROVIDERS = {
    'google': {
@@ -170,3 +172,9 @@ LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD ='email'
 ACCOUNT_EMAIL_REQUIRED = True
+
+
+
+
+
+

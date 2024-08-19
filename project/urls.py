@@ -21,6 +21,7 @@ from SHOES.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from USER.views import *
+from ORDER.views import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,4 +36,6 @@ urlpatterns = [
     path('cart/', cart_view, name='cart-view'),
     path('cart/remove/<int:id>/', delete_cartitem, name='delete-cart-item'),  
     path('confirm_checkout/', confirm_checkout, name='confirm-checkout'),
+    path('complete-transaction/', complete_transaction, name='complete-transaction'),
+     path('order-history/', order_history, name='order-history'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

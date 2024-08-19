@@ -9,7 +9,7 @@
                     <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.name }}" width="100" height="100">
                 </div>
                 <div class="cart-item-details">
-                   <li>Name: {{ item.shoe.name }} - Size: {{ item.size.name }}  - Price: {{ item.shoe.price }}</li>
+                   <li>Name: {{ item.shoe.name }} - Size: {{ item.size.name }}  - Price: {{ item.shoe.price }}$</li>
                 </div>
                 <div class ='cart-delete-btn'>
                   <a href="{% url 'delete-cart-item' item.id %}" class="remove-item">Delete</a>

@@ -32,8 +32,10 @@
                     <ul class="hoverlist [&>li>a]:justify-end">
                         <li><a href="{% url 'profile' %}">My Profile</a></li>
                         <li><a href="{% url 'profile-edit' %}">Edit Profile</a></li>
-                         <li><a href="">My order</a></li>
+                         <li><a href="{% url 'order-history' %}">My order</a></li>
                         <li><a href="{% url 'account_logout' %} ">Log Out</a></li>
+                        <li><a href="/admin/">Admin Site</a></li>
+                        
                     </ul>
                 </div>
             </li>
