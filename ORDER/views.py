@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from USER.models import Profile
 
 
+
 @login_required
 def cart_view(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
@@ -26,33 +27,47 @@ def confirm_checkout(request):
     
     cart = Cart.objects.filter(user=request.user).first()
     if not cart or not cart.items.exists():
-        return redirect('cart-view') 
+        return redirect('cart-view')
 
     total_price = sum(float(item.shoe.price) for item in cart.items.all())
     discount = 0
+    shipping_fee = 0
+
+   
+    profile = Profile.objects.get(user=request.user)
+    if not profile.city.filter(name='Hồ Chí Minh').exists():
+     shipping_fee = 5
+    else:
+     shipping_fee = 0
+
+    
     voucher_code = request.POST.get('voucher_code', '')
 
     if voucher_code:
         try:
-         voucher = Voucher.objects.get(code=voucher_code)
-         if voucher.is_valid():
-            discount = round(float(total_price * (voucher.discount_percentage / 100)), 1)
-            total_price -= discount
-            request.session['discount'] = discount
-         else:
-            messages.error(request, "Voucher is invalid or expired.")
+            voucher = Voucher.objects.get(code=voucher_code)
+            if voucher.is_valid():
+                discount = round(float(total_price * (voucher.discount_percentage / 100)), 1)
+                total_price -= discount
+                request.session['discount'] = discount
+            else:
+                messages.error(request, "Voucher is invalid or expired.")
         except Voucher.DoesNotExist:
-         messages.error(request, "Voucher does not exist.")
+            messages.error(request, "Voucher does not exist.")
+    
+    # Cộng thêm phí ship vào tổng giá
+    total_price += shipping_fee
 
-    profile = Profile.objects.get(user=request.user)
     context = {
         'cart': cart,
         'total_price': total_price,
         'profile': profile,
         'discount': discount,
+        'shipping_fee': shipping_fee,
     }
 
     return render(request, 'HomePage/confirm_info.html', context)
+
 
 
 
@@ -72,12 +87,25 @@ def complete_transaction(request):
             size=item.size,
         )
         total_price += float(item.shoe.price)
+    
     discount = request.session.get('discount', 0)
     total_price -= discount
+
+    
+    shipping_fee = 0
+    profile = Profile.objects.get(user=request.user)
+    if not profile.city.filter(name='Hồ Chí Minh').exists():
+     shipping_fee = 5
+    else:
+     shipping_fee = 0
+
+    
+    total_price += shipping_fee
+
     order.total_price = total_price
     order.save()
     cart.items.all().delete()
-    
+
     if 'discount' in request.session:
         del request.session['discount']
     messages.success(request, 'You have placed your order successfully')

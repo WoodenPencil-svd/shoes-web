@@ -12,7 +12,9 @@
                     <div class ="text-gray-400 mb-2 -mt-3"> @{{user.username}}</div>
                     <div class="text-gray-400 mb-2 -mt-3"></div>
                     <div class="flex items-center justify-center mx-auto">
-                        Location: {{profile.location}}
+                        Location: {{profile.address}}, {% for city in profile.city.all %}
+        {{ city.name }}
+    {% endfor %}
                     </div>
                     <div class="my-8">
                         Phone Number: {{profile.phonenumber}}

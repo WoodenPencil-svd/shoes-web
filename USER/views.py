@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
-def profile_view(request,username = None):
+def profile_view(request):
     profile = request.user.profile 
     return render(request,'USER/profile.html',{'profile': profile})
 

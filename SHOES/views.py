@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from USER.models import Profile
 from ORDER.models import *
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def shoe_page_view(request, pk):
     shoe = get_object_or_404(Shoes, id=pk)
@@ -58,6 +58,8 @@ def brand_view(request, brand):
     return render(request, 'HomePage/home.html', context)
 
 
+
+
 def home_view(request):
     form = SearchForm(request.GET)
     shoes = Shoes.objects.all()
@@ -73,7 +75,23 @@ def home_view(request):
         if tag:
             shoes = shoes.filter(tag=tag)
 
-    return render(request, 'HomePage/home.html', {'form': form, 'shoes': shoes})
+    
+    paginator = Paginator(shoes, 9)  
+    page = request.GET.get('page')
+    try:
+        shoes = paginator.page(page)
+    except PageNotAnInteger:
+        shoes = paginator.page(1)
+    except EmptyPage:
+        shoes = paginator.page(paginator.num_pages)
+
+    context = {
+        'shoes': shoes,
+        'form': form
+    }
+
+    return render(request, 'HomePage/home.html', context)
+
 
 
 

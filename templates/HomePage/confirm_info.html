@@ -8,7 +8,10 @@
         <h3>User Information</h3>
         <p><strong>Name:</strong> {{ user.profile.realname }}</p>
         <p><strong>Email:</strong> {{ user.profile.email }}</p>
-        <p><strong>Location:</strong> {{ user.profile.location }}</p>
+        <p><strong>Address:</strong> {{ user.profile.address }}</p>
+        {% for city in profile.city.all %}
+        <p><strong>City:</strong> {{ city.name }}</p>
+        {% endfor %}
         <p><strong>Phone Number:</strong> {{ user.profile.phonenumber }}</p>
     </div>
 
@@ -50,8 +53,9 @@
         </div>
         
 </div>
-
+      
       <div class="total-price" >
+      <h3>Shipping Fee: +${{ shipping_fee }} </h3>
        {% if discount %}
        <h3 >Discount: -${{ discount }}</h3> 
        {% endif %}
@@ -63,7 +67,7 @@
             <button type="submit" class="btn btn-primary">Complete Transaction</button>
         </div>
     </form>
-    <a class="button secondaryAction ml-1" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+    <a class="button secondaryAction ml-1" href="{% url 'cart-view'%}">Cancel</a>
 </div>
 
 {% endblock %}

@@ -118,6 +118,17 @@ DATABASES = {
     }
 }
 
+# settings.py
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'gin21010304@gmail.com'  # Thay bằng email của bạn
+EMAIL_HOST_PASSWORD = 'Thanhnhan21010304'  # Thay bằng mật khẩu email của bạn
+DEFAULT_FROM_EMAIL = 'ShoeShop@gmail.com'
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -166,6 +177,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Make email become requirement field
 SITE_ID = 1
+
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = '/'

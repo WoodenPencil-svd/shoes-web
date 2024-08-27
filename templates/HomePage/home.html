@@ -3,8 +3,9 @@
     {% block content2 %}
     <form  method="get">
         {{ form.as_p }}
-        <button type="submit">Search</button>
+        <button  type="submit">Search</button>
     </form>
+
     {%endblock%}
 
     <ul>
@@ -12,6 +13,35 @@
     {%  for shoe in shoes %}
     {% include "HomePage/shoe.html" %}
     {% endfor %}
+    
+     <div class="pagination">
+    <div class="step-links">
+        {% if shoes.has_previous %}
+            <div class="pagination-button">
+                <a href="?page=1"> First</a>
+            </div>
+            <div class="pagination-button">
+                <a href="?page={{ shoes.previous_page_number }}">Previous</a>
+            </div>
+        {% endif %}
+
+        <div class="pagination-info">
+             {{ shoes.number }}/{{ shoes.paginator.num_pages }}
+        </div>
+
+        {% if shoes.has_next %}
+            <div class="pagination-button">
+                <a href="?page={{ shoes.next_page_number }}">Next</a>
+            </div>
+            <div class="pagination-button">
+                <a href="?page={{ shoes.paginator.num_pages }}">Last </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
     </ul>
+    
+
+
     {%endblock%}
 

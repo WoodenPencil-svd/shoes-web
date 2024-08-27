@@ -1,9 +1,10 @@
 <article class="product-card">
     <figure>
-        <a class="product-card__link-overlay" href="{% url 'shoes-view' shoe.id %}" tabindex="-1" style="font-weight: bold;">{{ shoe.name }}</a>
+       
       <a class="image-wrapper" href="{% url 'shoes-view' shoe.id %}">
     <img class="product-card__hero-image" src="{{ shoe.image.url }}">
 </a>
+ <a class="product-card__link-overlay" href="{% url 'shoes-view' shoe.id %}" tabindex="-1" style="font-weight: bold;">{{ shoe.name }}</a>
 
         <div class="product-card__info">
             <div class="product-card__count-wrapper">
@@ -21,5 +22,6 @@
         <a class="product-card__brand" href="{% url 'brand' brand.slug %}">{{ brand.name }}</a>
     {% endfor %}
 </div>
+
     </figure>
 </article>
