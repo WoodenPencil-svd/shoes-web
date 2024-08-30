@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
@@ -237,17 +238,10 @@
 
     .product-card {
     border: 2px solid #003366; 
-    
-        }
-
-    .product-card__tag-wrapper {
-    display: inline-block; 
-    border: 0.5px solid #000; 
-    border-radius: 10px; 
-    padding: 8px; 
-    
-    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+
 .product-card__info {
     display: flex;
     flex-direction: column;
@@ -260,23 +254,40 @@
     display: flex;
     align-items: center; /* Căn giữa theo chiều dọc */
     justify-content: center; /* Căn giữa theo chiều ngang */
-    margin-bottom: 10px; /* Khoảng cách dưới phần giá */
-
+    margin-bottom: 15px; /* Tăng khoảng cách dưới phần giá */
+    padding: 10px 20px; /* Thêm padding để tạo không gian xung quanh chữ */
+    background-color: rgba(0, 51, 102, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng đổ */
+    font-size: 1.2em; /* Đặt kích thước chữ */
+    font-weight: bold; /* Đặt chữ thành đậm */
+    color: #003366; /* Thay đổi màu chữ */
 }
-
 
 .product-card__tag-wrapper {
-    margin-bottom: 10px; /* Thêm khoảng cách giữa tag và nút */
-       
+    display: inline-block;
+    padding: 10px;
+    justify-content: flex-start; /* Căn giữa theo chiều ngang, căn sang bên trái */
+    margin-bottom: 10px; /* Tăng khoảng cách giữa tag và các phần tử khác */
+    border-radius: 5px; /* Bo tròn các góc của phần tử */
+    font-size: 1em; /* Đặt kích thước chữ */
+    font-weight: 600; /* Đặt chữ thành đậm vừa phải */
+    color: #003366; /* Thay đổi màu chữ */
 }
+
 .product-card__link-overlay {
-    padding-left: 6px
+    padding: 10px ;
+    color: #003366;
+    font-size: 1em;
+    font-weight: bold;
+    display: block; /* Để phần tử chiếm toàn bộ chiều rộng của phần tử chứa */
+    width: fit-content; /* Để phần tử tự động điều chỉnh kích thước */
+    margin: 0 auto; /* Căn giữa phần tử */
 }
+
 
 .image-wrapper {
     width: 100%;
     height: 250px; /* Đặt chiều cao mong muốn */
-    
     overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước khung */
     display: flex;
     align-items: center;
@@ -336,17 +347,20 @@
     margin-top: 20px;
 }
 
-.shoe-card__price-wrapper {
-    margin-bottom: 10px;
+.shoe-card__price-wrapper,
+.shoe-card__tag-wrapper,
+.shoe-card__brand-wrapper {
+    display: inline-block; /* Để phần tử chỉ chiếm không gian cần thiết */
+    padding: 10px 15px; /* Thêm padding để tạo không gian xung quanh chữ */
+    border: 1px solid #003366; /* Thêm viền cho phần tử */
+    border-radius: 5px; /* Bo tròn các góc của phần tử */
+    background-color: #f0f8ff; /* Thêm màu nền nhẹ */
+    font-weight: bold; /* Đặt chữ thành đậm */
+    color: #003366; /* Thay đổi màu chữ */
 }
 
-.shoe-card__tag-wrapper, .shoe-card__brand-wrapper {
-    margin-bottom: 10px;
-}
 
-.shoe-card__button {
-    margin-right: 10px;
-}
+
 .shoe-card__size-wrapper {
     display: flex;
     flex-wrap: wrap; /* Để các ô tự động xuống dòng khi hết chỗ */
@@ -385,6 +399,15 @@
     display: inline-block;
 
 }
+.form-container {
+    text-align: center; /* Căn giữa các phần tử inline hoặc inline-block */
+    padding-top: 10px; /* Thay đổi padding nếu cần */
+}
+
+.button-container {
+    margin-top: 5px; /* Khoảng cách giữa form và button */
+}
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -469,8 +492,8 @@
 }
 .pagination {
     display: flex;
-    justify-content: left;
-    margin-top: 10px;
+    justify-content: center; 
+    padding-top: 30px;
 }
 
 .step-links {
@@ -479,10 +502,11 @@
     align-items: center;
 }
 
+
 .pagination-button {
     background-color: #003366;
     border: 1px solid #003366;
-    border-radius: 5px;
+     border-radius: 30%;
     padding: 10px 10px;
 }
 
@@ -497,13 +521,14 @@
 }
 
 .pagination-info {
-    padding: 5px 5px;
-    
-    border-radius: 5px;
     padding: 10px 10px;
+    border-radius: 30%;
     border: 1px solid #007bff;
 
 }
+
+
+
 
 
     </style>
@@ -515,4 +540,5 @@
 {% endblock %}
     
 </body>
+
 </html>

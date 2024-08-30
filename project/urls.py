@@ -27,7 +27,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("shoe/<pk>/", shoe_page_view, name = 'shoes-view'),
     path('tag/<slug:tag>/', tag_view, name='tag'),
-    path('brand/<slug:brand>/', brand_view, name='brand'),
     path('accounts/', include('allauth.urls')),
     path('',home_view,name= 'home'),
     path('profile/', profile_view, name='profile'),

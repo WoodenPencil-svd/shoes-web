@@ -12,7 +12,7 @@
                     <p>{{ shoe.description }}</p>
                     <div class="shoe-card__info">
                         <div class="shoe-card__price-wrapper">
-                            <div class="shoe-card__price">{{ shoe.price }}$</div>
+                            <div class="shoe-card__price">Price: {{ shoe.price }}$</div>
                         </div>
                         <div class="shoe-card__tag-wrapper">
                             {% for tag in shoe.tag.all %}
@@ -21,7 +21,7 @@
                         </div>
                         <div class="shoe-card__brand-wrapper">
                             {% for brand in shoe.brand.all %}
-                                <div class="shoe-card__brand">{{ brand.name }}</div>
+                                <div class="shoe-card__brand">Brand: {{ brand.name }}</div>
                             {% endfor %}
                         </div>
                         <div>

@@ -35,6 +35,15 @@ def tag_view(request, tag):
     tags = Tag.objects.all()
     brands = Brand.objects.all()
     form = SearchForm(request.GET)
+    
+    paginator = Paginator(shoes, 9)  
+    page = request.GET.get('page')
+    try:
+        shoes = paginator.page(page)
+    except PageNotAnInteger:
+        shoes = paginator.page(1)
+    except EmptyPage:
+        shoes = paginator.page(paginator.num_pages)
     context = {
         'shoes': shoes,
         'tags': tags,
@@ -42,22 +51,6 @@ def tag_view(request, tag):
         'form': form
     }
     return render(request, 'HomePage/home.html', context)
-
-
-def brand_view(request, brand):
-    shoes = Shoes.objects.filter(brand__slug=brand)
-    tags = Tag.objects.all()
-    brands = Brand.objects.all()
-    form = SearchForm(request.GET)
-    context = {
-        'shoes': shoes,
-        'tags': tags,
-        'brands': brands,
-        'form': form
-    }
-    return render(request, 'HomePage/home.html', context)
-
-
 
 
 def home_view(request):

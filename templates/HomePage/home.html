@@ -1,20 +1,17 @@
 {% extends "layouts/c.html" %}
 
     {% block content2 %}
-    <form  method="get">
-        {{ form.as_p }}
-        <button  type="submit">Search</button>
-    </form>
+    <h2>Search Here...</h2>
+  <form method="get" class="form-container">
+    {{ form.as_p }}
+    <div class="button-container">
+        <button class="search-b">Search</button>
+    </div>
+</form>
 
-    {%endblock%}
-
-    <ul>
-    {% block content1 %}
-    {%  for shoe in shoes %}
-    {% include "HomePage/shoe.html" %}
-    {% endfor %}
     
-     <div class="pagination">
+    
+    <div class="pagination">
     <div class="step-links">
         {% if shoes.has_previous %}
             <div class="pagination-button">
@@ -39,9 +36,15 @@
         {% endif %}
     </div>
 </div>
-    </ul>
-    
+    {%endblock%}
 
+    <ul>
+    {% block content1 %}
+    {%  for shoe in shoes %}
+    {% include "HomePage/shoe.html" %}
+    {% endfor %}
+    
+    </ul>
 
     {%endblock%}
 
