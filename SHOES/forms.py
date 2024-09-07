@@ -6,6 +6,7 @@ class SearchForm(forms.Form):
     brand = forms.ModelChoiceField(queryset=Brand.objects.all(), required=False)
     tag = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False,label='Sex')
  
+
     
 class AddToCartForm(forms.Form):
     size = forms.ModelChoiceField(queryset=SizeShoe.objects.all(), required=True, label='Select Size')

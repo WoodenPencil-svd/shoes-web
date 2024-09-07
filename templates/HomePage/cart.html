@@ -12,13 +12,13 @@
                    <li>Name: {{ item.shoe.name }} - Size: {{ item.size.name }}  - Price: {{ item.shoe.price }}$</li>
                 </div>
                 <div class ='cart-delete-btn'>
-                  <a href="{% url 'delete-cart-item' item.id %}" class="remove-item">Delete</a>
+                  <a href="{% url 'delete-cart-item' item.id %}" class="remove-item"><i class="fa-solid fa-delete-left"></i></a>
                 </div>
             </div>
         {% endfor %}
     </ul>
    <div class='cart-checkout-btn'>
-    <a href="{% url 'confirm-checkout' %}" class="btn btn-primary">Checkout</a>
+    <a href="{% url 'confirm-checkout' %}" class="cart-checkout-btn">Checkout</a>
 </div>
 
 

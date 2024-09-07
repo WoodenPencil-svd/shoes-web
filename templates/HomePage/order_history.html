@@ -1,12 +1,12 @@
 {% extends "layouts/b.html" %}
 
 {% block content %}
-<h2>Order History</h2>
+<h2  >Order History</h2>
 
 {% if orders.exists %}
     <ul class="order-list" style="list-style-type: none; padding: 0;">
         {% for order in orders %}
-        <li class="order-item" style="border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px;">
+        <li class="order-item" style="border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);">
            
             <p><strong>Order Date:</strong> {{ order.created_at }}</p>
             <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
