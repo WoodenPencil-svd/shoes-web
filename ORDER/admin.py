@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'created_at', 'total_price', 'order_items_display')
     list_filter = ('created_at', 'user')
     search_fields = ('user__username', 'id')
-    inlines = [OrderItemInline]  # Sử dụng OrderItemInline trong OrderAdmin
+    inlines = [OrderItemInline]  
 
 
     def order_items_display(self, obj):

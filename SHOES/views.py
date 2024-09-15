@@ -2,8 +2,6 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import *
 from .forms import * 
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from USER.models import Profile
 from ORDER.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 

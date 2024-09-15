@@ -55,7 +55,6 @@ def confirm_checkout(request):
         except Voucher.DoesNotExist:
             messages.error(request, "Voucher does not exist.")
     
-    # Cộng thêm phí ship vào tổng giá
     total_price += shipping_fee
 
     context = {
@@ -91,7 +90,6 @@ def complete_transaction(request):
     discount = request.session.get('discount', 0)
     total_price -= discount
 
-    
     shipping_fee = 0
     profile = Profile.objects.get(user=request.user)
     if not profile.city.filter(name='Hồ Chí Minh').exists():
@@ -99,7 +97,6 @@ def complete_transaction(request):
     else:
      shipping_fee = 0
 
-    
     total_price += shipping_fee
 
     order.total_price = total_price
@@ -116,10 +113,7 @@ def complete_transaction(request):
 @login_required
 def order_history(request):
     orders = Order.objects.filter(user=request.user).order_by('-created_at') 
-    context = {
-        'orders': orders,
-    }
-    return render(request, 'Homepage/order_history.html', context)
+    return render(request, 'Homepage/order_history.html',{'orders':orders})
 
 
 
