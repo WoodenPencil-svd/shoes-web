@@ -239,7 +239,9 @@
         }
 
     .product-card {
-    
+    display: flex;
+    align-items: center; 
+    justify-content:center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 .product-card:hover {
@@ -249,33 +251,33 @@
 .product-card__info {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+    align-items: center; 
     
     
 }
 
 .product-card__price-wrapper {
     display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    margin-bottom: 15px; /* Tăng khoảng cách dưới phần giá */
-    padding: 10px 20px; /* Thêm padding để tạo không gian xung quanh chữ */
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 15px; 
+    padding: 10px 20px; 
     background-color: rgba(0, 51, 102, 0.1);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng đổ */
-    font-size: 1.2em; /* Đặt kích thước chữ */
-    font-weight: bold; /* Đặt chữ thành đậm */
-    color: #003366; /* Thay đổi màu chữ */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: #003366; 
 }
 
 .product-card__tag-wrapper {
     display: inline-block;
     padding: 10px;
-    justify-content: flex-start; /* Căn giữa theo chiều ngang, căn sang bên trái */
-    margin-bottom: 10px; /* Tăng khoảng cách giữa tag và các phần tử khác */
-    border-radius: 5px; /* Bo tròn các góc của phần tử */
-    font-size: 1em; /* Đặt kích thước chữ */
-    font-weight: 600; /* Đặt chữ thành đậm vừa phải */
-    color: #003366; /* Thay đổi màu chữ */
+    justify-content: flex-start; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+    font-size: 1em; 
+    font-weight: 600; 
+    color: #003366; 
 }
 
 .product-card__link-overlay {
@@ -283,16 +285,16 @@
     color: #003366;
     font-size: 1em;
     font-weight: bold;
-    display: block; /* Để phần tử chiếm toàn bộ chiều rộng của phần tử chứa */
-    width: fit-content; /* Để phần tử tự động điều chỉnh kích thước */
-    margin: 0 auto; /* Căn giữa phần tử */
+    display: block; 
+    width: fit-content; 
+    margin: 0 auto; 
 }
 
 
 .image-wrapper {
     width: 100%;
-    height: 250px; /* Đặt chiều cao mong muốn */
-    overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước khung */
+    height: 250px; 
+    overflow: hidden; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -300,8 +302,8 @@
 }
 
 .product-card__hero-image {
-    width: 100%; /* Đặt chiều rộng của ảnh bằng với chiều rộng khung */
-    height: 100%; /* Chiều cao tự động để giữ tỷ lệ của ảnh */
+    width: 100%; 
+    height: 100%; 
 }
 .shoe-card-detail {
     display: flex;
@@ -324,8 +326,8 @@
 .shoe-card__hero-image {
     width: 100%; 
     height: 100%; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Viền đen xung quanh ảnh */
-    overflow: hidden; /* Ẩn phần ảnh vượt quá kích thước khung */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
+    overflow: hidden; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -354,27 +356,27 @@
 .shoe-card__price-wrapper,
 .shoe-card__tag-wrapper,
 .shoe-card__brand-wrapper {
-    display: inline-block; /* Để phần tử chỉ chiếm không gian cần thiết */
-    padding: 10px 15px; /* Thêm padding để tạo không gian xung quanh chữ */
-    border: 1px solid #003366; /* Thêm viền cho phần tử */
-    border-radius: 5px; /* Bo tròn các góc của phần tử */
-    background-color: #f0f8ff; /* Thêm màu nền nhẹ */
-    font-weight: bold; /* Đặt chữ thành đậm */
-    color: #003366; /* Thay đổi màu chữ */
+    display: inline-block; 
+    padding: 10px 15px; 
+    border: 1px solid #003366; 
+    border-radius: 5px; 
+    background-color: #f0f8ff; 
+    font-weight: bold; 
+    color: #003366; 
 }
 
 
 
 .shoe-card__size-wrapper {
     display: flex;
-    flex-wrap: wrap; /* Để các ô tự động xuống dòng khi hết chỗ */
-    gap: 10px; /* Khoảng cách giữa các ô */
+    flex-wrap: wrap; 
+    gap: 10px; 
 }
 
 .shoe-card__size {
-    padding: 8px ; /* Khoảng cách bên trong ô */
-    border: 1px solid #003366; /* Viền xung quanh ô */
-    border-radius: 10px; /* Bo tròn góc viền */
+    padding: 8px ; 
+    border: 1px solid #003366; 
+    border-radius: 10px; 
     background-color: #003366; 
     text-align: center; 
     margin-bottom: 10px; 
@@ -390,7 +392,7 @@
 .search-input {
     padding: 15px;
     font-size: 14px;
-    width: 300px; /* Điều chỉnh chiều rộng theo nhu cầu */
+    width: 300px; 
 }
 
 
@@ -398,28 +400,28 @@
 .search-bar {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
     background-color:#FFFFFF;
-    padding: 16px; /* Khoảng cách bên trong */
-    border-radius: 8px; /* Bo góc (tuỳ chọn) */
+    padding: 16px; 
+    border-radius: 8px; 
     display: inline-block;
 
 }
 .form-container {
-    text-align: center; /* Căn giữa các phần tử inline hoặc inline-block */
-    padding-top: 10px; /* Thay đổi padding nếu cần */
+    text-align: center; 
+    padding-top: 10px; 
 }
 
 .button-container {
-    margin-top: 5px; /* Khoảng cách giữa form và button */
+    margin-top: 5px; 
 }
 
 .cart-item {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    padding: 15px; /* Khoảng cách bên trong khung */
+    padding: 15px; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-    border-radius: 8px; /* Bo tròn các góc */
-    background-color: #f9f9f9; /* Màu nền của khung */
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
     justify-content: space-between;
 }
 .cart-item-image {
@@ -427,12 +429,12 @@
 }
 
 .cart-item-details {
-    flex-grow: 1; /* Để chiếm khoảng trống giữa hình ảnh và nút delete */
+    flex-grow: 1; 
     margin-right: 10px;
 }
 
 .cart-delete-btn {
-    margin-left: auto; /* Đẩy nút delete sang bên phải */
+    margin-left: auto; 
 }
 .cart-checkout-btn {
     text-align: right;
@@ -443,27 +445,27 @@
 .checkout-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Căn chỉnh các phần tử trên cùng một hàng */
+    align-items: flex-start; 
     margin-bottom: 20px;
 }
 
 .cart-items-checkout {
-    flex: 1; /* Giữ phần cart-items-checkout phía bên phải */
+    flex: 1; 
     margin-left: 20px;
     
 }.cart-items-checkout {
-    flex: 1; /* Giữ phần cart-items-checkout phía bên phải */
+    flex: 1; 
     margin-left: 20px;
     
 }
 
 .user-info {
-    flex: 1; /* Giữ phần user-info phía bên trái */
+    flex: 1; 
     margin-right: 20px;
 }
 
 .total-price {
-    text-align: right; /* Căn phải phần Total Price */
+    text-align: right; 
     margin-top: 20px;
 }
 

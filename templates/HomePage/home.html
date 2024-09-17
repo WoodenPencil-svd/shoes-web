@@ -8,9 +8,6 @@
         <button class="search-b">Search </button>
     </div>
 </form>
-
-    
-    
     <div class="pagination">
     <div class="step-links">
         {% if shoes.has_previous %}
@@ -35,15 +32,16 @@
             </div>
         {% endif %}
     </div>
+    
 </div>
     {%endblock%}
-
+    
     <ul>
     {% block content1 %}
+    
     {%  for shoe in shoes %}
     {% include "HomePage/shoe.html" %}
     {% endfor %}
-    
     </ul>
 
     {%endblock%}

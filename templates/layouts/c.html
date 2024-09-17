@@ -7,17 +7,30 @@
    <div class ='search-bar'>
     {% block content2 %}
     {% endblock %}
-    
+
+     <div class="shoe-list">
+    <h2 style ="color: #003366">Recommendations for you. </h2>
+        {% if recommended_shoes %}
+            {% for shoe in recommended_shoes %}
+                <p>- {{ shoe }}</p>
+            {% endfor %}
+        {% else %}
+            <p style="color: #003366">No recommendations available.</p>
+        {% endif %}
+    </div>
    </div>
     
 </div>
 
       
     <div class="col-span-full md:col-span-2 order-2 md:order-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    
         {% block content1 %}
         {% endblock %}
     </div>
-</content>
 
+    
+    
+</content>
 {% include 'includes/footer.html' %}
 {% endblock %}

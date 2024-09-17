@@ -4,7 +4,7 @@ from .forms import *
 from django.contrib import messages
 from ORDER.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from RECOMMENDATION_SYSTEM.views import *
 def shoe_page_view(request, pk):
     shoe = get_object_or_404(Shoes, id=pk)
     form = AddToCartForm(request.POST or None)
@@ -54,6 +54,18 @@ def tag_view(request, tag):
 def home_view(request):
     form = SearchForm(request.GET)
     shoes = Shoes.objects.all()
+    #
+    user = request.user
+
+    # Chuẩn bị dữ liệu recommendation
+    user_item_matrix = prepare_data()
+    # Kiểm tra nếu user hợp lệ và có dữ liệu
+    recommended_shoes = []
+    if user.is_authenticated:  # Đảm bảo người dùng đã đăng nhập
+        if not user_item_matrix.empty:
+            recommended_shoes = recommend_shoes(user.id, user_item_matrix)
+    #
+    
 
     if form.is_valid():
         name = form.cleaned_data.get('name')
@@ -78,7 +90,9 @@ def home_view(request):
 
     context = {
         'shoes': shoes,
-        'form': form
+        'form': form,
+        #
+        'recommended_shoes': recommended_shoes
     }
 
     return render(request, 'HomePage/home.html', context)
