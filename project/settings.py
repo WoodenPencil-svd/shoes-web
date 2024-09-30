@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+     'allauth.socialaccount.providers.paypal',
     'ORDER',
-    'RECOMMENDATION_SYSTEM',
+    'RECOMMENDATION_SYSTEM',  
     
 ]
 SOCIALACCOUNT_PROVIDERS = {
@@ -65,7 +66,22 @@ SOCIALACCOUNT_PROVIDERS = {
             'key': ''
         }
     },
+     'paypal': {
+        'APP': {
+            'client_id': 'AXLrIBrrxt4XL6xsnEI5HJeErkqKBFV4eW16O6x7awAYXmOGPwHVgMU2fs1bW277YqhKtJWtDrBEpGMu',
+            'secret': 'EBH0UcqtoD6maODRJ5N5eBB7PtRBE_e0WVxnFGFVZ7vX8nkOJ9OdS9bIWVCGf6U-bWHg9h1yMpFJyjUU',
+            'key': ''
+        }
+    },
 }
+import paypalrestsdk
+
+paypalrestsdk.configure({
+    "mode": "sandbox",  # or "live" khi chuyển qua production
+    "client_id": "AXLrIBrrxt4XL6xsnEI5HJeErkqKBFV4eW16O6x7awAYXmOGPwHVgMU2fs1bW277YqhKtJWtDrBEpGMu",
+    "client_secret": "EBH0UcqtoD6maODRJ5N5eBB7PtRBE_e0WVxnFGFVZ7vX8nkOJ9OdS9bIWVCGf6U-bWHg9h1yMpFJyjUU",
+})
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -114,8 +130,8 @@ DATABASES = {
         'NAME': 'shoes_website',
         'USER': 'postgres',
         'PASSWORD': '1021012003',
-        'HOST': 'localhost',  # hoặc địa chỉ IP của PostgreSQL server
-        'PORT': '5432',       # cổng mặc định của PostgreSQL
+        'HOST': 'localhost',  
+        'PORT': '5432',       
     }
 }
 
@@ -124,8 +140,8 @@ DATABASES = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'gin21010304@gmail.com'  # Thay bằng email của bạn
-EMAIL_HOST_PASSWORD = 'Thanhnhan21010304'  # Thay bằng mật khẩu email của bạn
+EMAIL_HOST_USER = 'gin21010304@gmail.com'  
+EMAIL_HOST_PASSWORD = 'Thanhnhan21010304'  
 DEFAULT_FROM_EMAIL = 'ShoeShop@gmail.com'
 
 
@@ -178,7 +194,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Make email become requirement field
 SITE_ID = 1
-
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = '/'

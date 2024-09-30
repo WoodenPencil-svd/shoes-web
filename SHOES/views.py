@@ -56,12 +56,9 @@ def home_view(request):
     shoes = Shoes.objects.all()
     #
     user = request.user
-
-    # Chuẩn bị dữ liệu recommendation
     user_item_matrix = prepare_data()
-    # Kiểm tra nếu user hợp lệ và có dữ liệu
     recommended_shoes = []
-    if user.is_authenticated:  # Đảm bảo người dùng đã đăng nhập
+    if user.is_authenticated:
         if not user_item_matrix.empty:
             recommended_shoes = recommend_shoes(user.id, user_item_matrix)
     #
@@ -91,7 +88,6 @@ def home_view(request):
     context = {
         'shoes': shoes,
         'form': form,
-        #
         'recommended_shoes': recommended_shoes
     }
 

@@ -37,5 +37,10 @@ urlpatterns = [
     path('confirm_checkout/', confirm_checkout, name='confirm-checkout'),
     path('complete-transaction/', complete_transaction, name='complete-transaction'),
      path('order-history/', order_history, name='order-history'),
+    path('payment/paypal/', paypal_payment, name='paypal_payment'),
+    path('payment/cancel', paypal_cancel, name='paypal_cancel'),
+    path('payment/execute', paypal_execute, name='paypal_execute'),
+   
+    
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
